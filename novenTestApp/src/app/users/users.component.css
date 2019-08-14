@@ -97,3 +97,9 @@ h3{
 	text-align: center;
 }
 
+.userTodoChart ::ng-deep svg{
+	width: 900px;
+    height: 320px;
+    margin: 40px auto;
+    display: table;
+}
