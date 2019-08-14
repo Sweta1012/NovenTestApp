@@ -1,1 +1,60 @@
-<p>users works!</p>
+
+<div class = "userMainContainer">
+	<header class="main-heading"><h1>Users Todo List</h1></header>
+	<div class = 'usersContainer'>
+
+		<div>
+			<h3>List Of Users</h3>
+			<ul>
+				<li *ngFor = "let user of usersArray;let ind = index" (click) = "getUserDetails(user)" [ngClass] = "{'active':user.isSelected}">{{user.name}}</li>
+			</ul> 
+		</div>
+	</div>
+	<div class = "todoBlock" *ngIf = "completedArray.length && pendingArray.length">
+		<div class ="todo">
+			<div class ="completed">
+				<h3>Completed Todo's</h3>
+				<table>
+					<thead>
+						<tr>
+							<th (click) = "sortBy(completedArray, 'completed','id')">id <span><i class="fa fa-sort-up" aria-hidden="true" *ngIf = "type == 'completed' && isDesc"></i></span>
+								<span *ngIf = "type == 'completed' && !isDesc">
+								<i class="fa fa-sort-down" aria-hidden="true"></i></span>
+							</th>
+							<th>title</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor = "let complete of completedArray">
+							<td >{{complete.id}}</td>
+							<td>{{complete.title}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class = "pending">
+				<h3>Pending Todo's</h3>
+				<table>
+					<thead>
+						<tr>
+							<th (click) = "sortBy(pendingArray, 'pending','id')">id 
+								<span><i class="fa fa-sort-up" aria-hidden="true" *ngIf = "type == 'pending' && isDesc"></i></span><span *ngIf = "type == 'pending' && !isDesc">
+								<i class="fa fa-sort-down" aria-hidden="true"></i></span>
+							</th>
+							<th>title</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor = "let pending of pendingArray">
+							<td>{{pending.id}}</td>
+							<td>{{pending.title}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
