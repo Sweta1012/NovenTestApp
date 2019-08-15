@@ -12,7 +12,7 @@ export class ChartComponent implements OnInit {
 	seriesData = [];
 	@Input() TodoGraphData;
 	flag = false;
-	@ViewChild('chartTarget', {}) chartTarget: ElementRef;
+	@ViewChild('chartTarget', {static: true}) chartTarget: ElementRef;
 
   constructor() { }
 
